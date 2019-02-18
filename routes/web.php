@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::group(['namespace'=>'Home'], function (){
+    $this->get('/', 'Principal\HomeController@index')->name('Home.Principal.index');
+});
+
+Auth::routes();
+
+
+Route::group(['namespace'=>'Painel'], function (){
+    $this->get('/Painel', 'Principal\PainelController@index')->name('Painel.Principal.index');
 });
